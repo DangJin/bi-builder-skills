@@ -91,4 +91,4 @@ bi-builder-skills/
 
 ## License
 
-MIT
+[MIT](./LICENSE)
