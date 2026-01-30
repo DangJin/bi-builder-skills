@@ -12,6 +12,7 @@ A Claude Code skill for rapidly building BI dashboards and data visualization ap
 ## Features
 
 - **6-Phase Workflow**: Database Connection → Schema Exploration → Requirements Dialog → Metrics Design → Chart Planning → Page Implementation
+- **4 Layout Patterns**: Executive, Operational, Analytical, Comparison dashboards with complete templates
 - **Industry-Specific Templates**: Pre-configured metrics for 7 industries (E-commerce, SaaS, Finance, Content, Education, Healthcare, Logistics)
 - **Smart Skip Conditions**: Automatically skip phases based on project state
 - **Progressive Document Loading**: Load reference docs on-demand to save context
@@ -55,6 +56,7 @@ bi-builder-skills/
 │       └── references/
 │           ├── data-layer.md        # Prisma queries & API design
 │           ├── recharts-guide.md    # Chart type examples
+│           ├── table-patterns.md    # DataTable patterns
 │           ├── dashboard-patterns.md # Layout & component patterns
 │           └── export-patterns.md   # CSV & image export
 └── README.md
@@ -80,6 +82,17 @@ bi-builder-skills/
 | Healthcare | Visit volume, Bed turnover, Satisfaction |
 | Logistics | Order fulfillment rate, Delivery time |
 
+## Layout Patterns
+
+| Layout | Best For | Key Features |
+|--------|----------|--------------|
+| **Executive Dashboard** | C-level, managers | KPI cards + main trend chart + distribution |
+| **Operational Dashboard** | Operations team | Real-time status bar + live table + alerts |
+| **Analytical Dashboard** | Analysts, data team | Sidebar filters + drill-down + detailed table |
+| **Comparison Dashboard** | Strategy, planning | Period selector + dual charts + change analysis |
+
+Each layout includes complete code templates with responsive design.
+
 ## Reference Documents
 
 | Document | Content |
@@ -87,7 +100,7 @@ bi-builder-skills/
 | `data-layer.md` | Prisma schema analysis, aggregation queries, API routes |
 | `recharts-guide.md` | Line, Bar, Pie, Area, Composed, Scatter, Radar, Funnel charts |
 | `table-patterns.md` | DataTable with sorting, filtering, pagination, row selection |
-| `dashboard-patterns.md` | Responsive grid, KPI cards, filter bar, page layouts |
+| `dashboard-patterns.md` | 4 layout patterns, KPI cards, filter bar, responsive grid |
 | `export-patterns.md` | Client/server CSV export, html2canvas image export |
 
 ## License
