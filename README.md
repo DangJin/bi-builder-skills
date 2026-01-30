@@ -24,7 +24,7 @@ A Claude Code skill for rapidly building BI dashboards and data visualization ap
 | UI Components | shadcn/ui + Tailwind CSS |
 | Charts | Recharts |
 | ORM | Prisma |
-| Database | MySQL |
+| Database | MySQL / PostgreSQL / Supabase / SQLite |
 
 ## Installation
 

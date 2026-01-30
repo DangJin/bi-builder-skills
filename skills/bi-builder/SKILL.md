@@ -1,6 +1,6 @@
 ---
 name: bi-builder
-description: Build BI dashboards from databases. Use when creating dashboards, charts, or analytics pages with Next.js + shadcn/ui + Recharts + Prisma + MySQL.
+description: Build BI dashboards from databases. Use when creating dashboards, charts, or analytics pages with Next.js + shadcn/ui + Recharts + Prisma.
 ---
 
 # BI Builder
@@ -15,7 +15,7 @@ Build BI dashboards from existing databases, from data exploration to full imple
 | UI Components | shadcn/ui + Tailwind CSS |
 | Charts | Recharts |
 | ORM | Prisma |
-| Database | MySQL |
+| Database | MySQL / PostgreSQL / Supabase / SQLite |
 
 ## Core Workflow
 
@@ -54,7 +54,15 @@ npx prisma init
 
 **⚠️ Security Note: Never ask users to share database credentials directly.**
 
-First, ask user which database type they use (MySQL/PostgreSQL/SQLite), then create `.env` file with placeholders:
+First, ask user which database type they use, then create `.env` file with placeholders:
+
+```
+Which database are you using?
+1. MySQL
+2. PostgreSQL
+3. Supabase
+4. SQLite
+```
 
 **For MySQL:**
 ```env
@@ -76,6 +84,19 @@ DATABASE_URL="postgresql://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:5432/YOUR_DATAB
 # DATABASE_URL="postgresql://postgres:password123@localhost:5432/myapp_db"
 ```
 
+**For Supabase:**
+```env
+# Supabase Database Connection
+# Find your connection string in: Supabase Dashboard → Project Settings → Database → Connection string → URI
+DATABASE_URL="postgresql://postgres.YOUR_PROJECT_REF:YOUR_PASSWORD@aws-0-YOUR_REGION.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Direct connection (for migrations)
+DIRECT_URL="postgresql://postgres.YOUR_PROJECT_REF:YOUR_PASSWORD@aws-0-YOUR_REGION.pooler.supabase.com:5432/postgres"
+
+# Example:
+# DATABASE_URL="postgresql://postgres.abcdefghijkl:MyPassword123@aws-0-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+```
+
 **For SQLite:**
 ```env
 # Database Connection
@@ -83,6 +104,8 @@ DATABASE_URL="file:./dev.db"
 ```
 
 After creating the file, tell the user:
+
+**For MySQL/PostgreSQL:**
 ```
 I've created .env file with placeholders. Please fill in your actual database credentials:
 - YOUR_USERNAME → your database username
@@ -95,10 +118,24 @@ Tip: Use a read-only account for safety.
 Let me know when you've filled in the credentials.
 ```
 
+**For Supabase:**
+```
+I've created .env file with Supabase placeholders. To get your connection string:
+
+1. Go to Supabase Dashboard → Your Project
+2. Click "Project Settings" (gear icon)
+3. Go to "Database" section
+4. Copy the "Connection string" → "URI" format
+5. Replace [YOUR-PASSWORD] with your database password
+
+Let me know when you've filled in the credentials.
+```
+
 ### 1.3 Configure Prisma Schema
 
 After user confirms .env is configured, update `prisma/schema.prisma`:
 
+**For MySQL/PostgreSQL/SQLite:**
 ```prisma
 generator client {
   provider = "prisma-client-js"
@@ -107,6 +144,19 @@ generator client {
 datasource db {
   provider = "mysql"  // or postgresql, sqlite
   url      = env("DATABASE_URL")
+}
+```
+
+**For Supabase (requires directUrl for migrations):**
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 ```
 
