@@ -1,6 +1,6 @@
 ---
 name: bi-builder
-description: Rapidly build BI dashboards and data visualization applications. Use this skill when users need to: (1) Create data dashboards or analytics panels; (2) Generate data visualization charts (line, bar, pie charts, etc.); (3) Build business analysis pages (sales analytics, user analytics, operations dashboards); (4) Design data reports with filters. ⚠️ Only for Next.js App Router + shadcn/ui + Recharts + Prisma + MySQL stack. Do not use this skill for other frameworks.
+description: Build BI dashboards from databases. Use when creating dashboards, charts, or analytics pages with Next.js + shadcn/ui + Recharts + Prisma + MySQL.
 ---
 
 # BI Builder
