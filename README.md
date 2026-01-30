@@ -20,15 +20,21 @@ A Claude Code skill for rapidly building BI dashboards and data visualization ap
 ## How It Works
 
 ```mermaid
-flowchart LR
-    A[🔌 Database\nConnection] --> B[🔍 Schema\nExploration]
-    B --> C[💬 Requirements\nDialog]
-    C --> D[📐 Metrics\nDesign]
-    D --> E[📊 Chart\nPlanning]
-    E --> F[🚀 Page\nImplementation]
-```
+flowchart TB
+    A["1️⃣ Database Connection<br/>Setup Prisma & pull schema"]
+    B["2️⃣ Schema Exploration<br/>Analyze tables & identify metrics"]
+    C["3️⃣ Requirements Dialog<br/>Industry, metrics & filters"]
+    D["4️⃣ Metrics Design<br/>KPIs, aggregations & queries"]
+    E["5️⃣ Chart & Layout Planning<br/>Select visualizations & layout pattern"]
+    F["6️⃣ Page Implementation<br/>Build components & assemble dashboard"]
 
-> **Smart Skip**: Automatically skips phases based on project state (e.g., skip to Phase 2 if `prisma/schema.prisma` exists)
+    A --> B --> C --> D --> E --> F
+
+    %% Skip conditions
+    S1["schema exists"] -.->|skip| B
+    S2["clear requirements"] -.->|skip| D
+    S3["single chart only"] -.->|skip| F
+```
 
 ## Tech Stack
 
