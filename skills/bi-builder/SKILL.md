@@ -50,30 +50,49 @@ Skip phases based on project state and user needs:
 npx prisma init
 ```
 
-### 1.2 Guide User to Configure .env
+### 1.2 Create .env with Placeholders
 
-**⚠️ Security Note: Never ask users to share database credentials directly. Guide them to configure the .env file themselves.**
+**⚠️ Security Note: Never ask users to share database credentials directly.**
 
-Provide these instructions to the user:
+First, ask user which database type they use (MySQL/PostgreSQL/SQLite), then create `.env` file with placeholders:
 
+**For MySQL:**
+```env
+# Database Connection
+# Please fill in your database credentials below
+DATABASE_URL="mysql://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:3306/YOUR_DATABASE"
+
+# Example:
+# DATABASE_URL="mysql://root:password123@localhost:3306/myapp_db"
 ```
-Please configure your database connection in .env file:
 
-1. Open the .env file in your project root
-2. Set DATABASE_URL with your connection string:
+**For PostgreSQL:**
+```env
+# Database Connection
+# Please fill in your database credentials below
+DATABASE_URL="postgresql://YOUR_USERNAME:YOUR_PASSWORD@YOUR_HOST:5432/YOUR_DATABASE"
 
-   For MySQL:
-   DATABASE_URL="mysql://username:password@host:port/database"
+# Example:
+# DATABASE_URL="postgresql://postgres:password123@localhost:5432/myapp_db"
+```
 
-   For PostgreSQL:
-   DATABASE_URL="postgresql://username:password@host:port/database"
+**For SQLite:**
+```env
+# Database Connection
+DATABASE_URL="file:./dev.db"
+```
 
-   For SQLite:
-   DATABASE_URL="file:./dev.db"
+After creating the file, tell the user:
+```
+I've created .env file with placeholders. Please fill in your actual database credentials:
+- YOUR_USERNAME → your database username
+- YOUR_PASSWORD → your database password
+- YOUR_HOST → database host (e.g., localhost or IP address)
+- YOUR_DATABASE → database name
 
-3. Recommended: Use a read-only database account for safety
+Tip: Use a read-only account for safety.
 
-Let me know when you've configured the .env file.
+Let me know when you've filled in the credentials.
 ```
 
 ### 1.3 Configure Prisma Schema
