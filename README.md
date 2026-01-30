@@ -22,8 +22,8 @@ A Claude Code skill for rapidly building BI dashboards and data visualization ap
 ## Installation
 
 ```bash
-# Install using npx skill
-npx @anthropic-ai/claude-code-skill install https://github.com/DangJin/bi-builder-skills.git
+# Install using npx skills (recommended)
+npx skills add DangJin/bi-builder-skills
 
 # Or manually clone and symlink
 git clone https://github.com/DangJin/bi-builder-skills.git
