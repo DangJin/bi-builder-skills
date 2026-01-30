@@ -1,5 +1,12 @@
 # BI Builder Skill
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-blueviolet)](https://claude.ai/code)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)](https://www.prisma.io/)
+[![Recharts](https://img.shields.io/badge/Recharts-Charts-22b5bf)](https://recharts.org/)
+[![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-Components-000000)](https://ui.shadcn.com/)
+
 A Claude Code skill for rapidly building BI dashboards and data visualization applications from existing databases.
 
 ## Features
