@@ -43,34 +43,42 @@ Skip phases based on project state and user needs:
 
 ## Phase 1: Database Connection
 
-### 1.1 Get Database Connection Info
-
-Ask user for database connection details:
-
-```
-Please provide database connection information:
-1. Database type (MySQL/PostgreSQL/SQLite)
-2. Host address
-3. Port
-4. Database name
-5. Username
-6. Password (read-only account recommended)
-```
-
-### 1.2 Configure Prisma
+### 1.1 Initialize Prisma
 
 ```bash
 # Initialize Prisma (if not in project)
 npx prisma init
 ```
 
-Configure `.env`:
+### 1.2 Guide User to Configure .env
 
-```env
-DATABASE_URL="mysql://username:password@host:port/database"
+**⚠️ Security Note: Never ask users to share database credentials directly. Guide them to configure the .env file themselves.**
+
+Provide these instructions to the user:
+
+```
+Please configure your database connection in .env file:
+
+1. Open the .env file in your project root
+2. Set DATABASE_URL with your connection string:
+
+   For MySQL:
+   DATABASE_URL="mysql://username:password@host:port/database"
+
+   For PostgreSQL:
+   DATABASE_URL="postgresql://username:password@host:port/database"
+
+   For SQLite:
+   DATABASE_URL="file:./dev.db"
+
+3. Recommended: Use a read-only database account for safety
+
+Let me know when you've configured the .env file.
 ```
 
-Configure `prisma/schema.prisma`:
+### 1.3 Configure Prisma Schema
+
+After user confirms .env is configured, update `prisma/schema.prisma`:
 
 ```prisma
 generator client {
@@ -83,7 +91,7 @@ datasource db {
 }
 ```
 
-### 1.3 Pull Database Schema
+### 1.4 Pull Database Schema
 
 ```bash
 # Pull schema from existing database
@@ -93,7 +101,7 @@ npx prisma db pull
 npx prisma generate
 ```
 
-### 1.4 Error Handling
+### 1.5 Error Handling
 
 **When connection fails:**
 | Error Message | Possible Cause | Solution |
