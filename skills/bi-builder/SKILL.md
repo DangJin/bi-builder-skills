@@ -43,14 +43,35 @@ Skip phases based on project state and user needs:
 
 ## Phase 1: Database Connection
 
-### 1.1 Initialize Prisma
+### 1.1 Check and Install Prisma
+
+First, check if Prisma is already installed in the project:
 
 ```bash
-# Initialize Prisma (if not in project)
+# Check if prisma is in package.json dependencies
+grep -q '"prisma"' package.json && echo "Prisma installed" || echo "Prisma not installed"
+```
+
+If Prisma is not installed, install it:
+
+```bash
+# Install Prisma as dev dependency
+npm install prisma --save-dev
+
+# Install Prisma Client
+npm install @prisma/client
+```
+
+### 1.2 Initialize Prisma
+
+```bash
+# Initialize Prisma (creates prisma/schema.prisma and .env)
 npx prisma init
 ```
 
-### 1.2 Create .env with Placeholders
+**Note:** If `prisma/schema.prisma` already exists, skip this step.
+
+### 1.3 Create .env with Placeholders
 
 **⚠️ Security Note: Never ask users to share database credentials directly.**
 
@@ -131,7 +152,7 @@ I've created .env file with Supabase placeholders. To get your connection string
 Let me know when you've filled in the credentials.
 ```
 
-### 1.3 Configure Prisma Schema
+### 1.4 Configure Prisma Schema
 
 After user confirms .env is configured, update `prisma/schema.prisma`:
 
@@ -160,7 +181,7 @@ datasource db {
 }
 ```
 
-### 1.4 Pull Database Schema
+### 1.5 Pull Database Schema
 
 ```bash
 # Pull schema from existing database
@@ -170,7 +191,7 @@ npx prisma db pull
 npx prisma generate
 ```
 
-### 1.5 Error Handling
+### 1.6 Error Handling
 
 **When connection fails:**
 | Error Message | Possible Cause | Solution |
