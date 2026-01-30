@@ -22,11 +22,12 @@ A Claude Code skill for rapidly building BI dashboards and data visualization ap
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/DangJin/bi-builder-skills.git
+# Install using npx skill
+npx @anthropic-ai/claude-code-skill install https://github.com/DangJin/bi-builder-skills.git
 
-# Install to Claude Code skills directory
-unzip bi-builder.skill -d ~/.claude/skills/
+# Or manually clone and symlink
+git clone https://github.com/DangJin/bi-builder-skills.git
+ln -s $(pwd)/bi-builder-skills/skills/bi-builder ~/.claude/skills/bi-builder
 ```
 
 ## Usage
@@ -41,14 +42,14 @@ Trigger the skill in Claude Code by mentioning:
 
 ```
 bi-builder-skills/
-├── bi-builder/
-│   ├── SKILL.md                 # Main skill file
-│   └── references/
-│       ├── data-layer.md        # Prisma queries & API design
-│       ├── recharts-guide.md    # Chart type examples
-│       ├── dashboard-patterns.md # Layout & component patterns
-│       └── export-patterns.md   # CSV & image export
-├── bi-builder.skill             # Packaged skill (zip)
+├── skills/
+│   └── bi-builder/
+│       ├── SKILL.md                 # Main skill file
+│       └── references/
+│           ├── data-layer.md        # Prisma queries & API design
+│           ├── recharts-guide.md    # Chart type examples
+│           ├── dashboard-patterns.md # Layout & component patterns
+│           └── export-patterns.md   # CSV & image export
 └── README.md
 ```
 
