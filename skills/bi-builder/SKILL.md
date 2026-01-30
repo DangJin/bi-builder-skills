@@ -455,15 +455,18 @@ export async function getCategoryDistribution(startDate: Date, endDate: Date) {
 
 ## Phase 5: Chart Planning
 
-### 5.1 Chart Type Selection
+### 5.1 Visualization Type Selection
 
-| Metric Type | Recommended Chart | Reason |
-|-------------|-------------------|--------|
+| Data Type | Recommended Component | Reason |
+|-----------|----------------------|--------|
 | Time trends | LineChart / AreaChart | Show change over time |
 | Distribution | PieChart | Intuitive proportion display |
 | Rankings | BarChart (horizontal) | Easy comparison and reading |
 | Multi-metric comparison | ComposedChart | Combine bar and line charts |
 | Status distribution | PieChart / BarChart | Show counts per status |
+| Detailed records | DataTable | Sortable, filterable, paginated list |
+| Transaction logs | DataTable | Search, filter, export capabilities |
+| Item listings | DataTable | With actions (view, edit, delete) |
 
 ### 5.2 Layout Planning
 
@@ -502,6 +505,8 @@ app/dashboard/
     ├── revenue-chart.tsx     # Revenue trend chart
     ├── category-pie.tsx      # Category pie chart
     ├── top-products.tsx      # Product ranking
+    ├── data-table.tsx        # Reusable DataTable component
+    ├── columns.tsx           # Table column definitions
     ├── filters.tsx           # Filters
     └── export-button.tsx     # Export button
 
@@ -550,6 +555,8 @@ export function RevenueChart({ data }: { data: { period: string; revenue: number
 ```
 
 **Before creating chart components → Must read [recharts-guide.md](references/recharts-guide.md) for the corresponding chart type**
+
+**Before creating DataTable components → Must read [table-patterns.md](references/table-patterns.md)**
 
 **Before implementing page layout → Must read [dashboard-patterns.md](references/dashboard-patterns.md)**
 
@@ -603,11 +610,13 @@ const CHART_COLORS = [
 | Entering Phase 4 (before writing Prisma queries) | data-layer.md | `#data-aggregation-queries` |
 | Entering Phase 5 (when selecting chart types) | recharts-guide.md | Corresponding chart type section |
 | Entering Phase 6 (before implementing page layout) | dashboard-patterns.md | `#responsive-grid-layout` `#kpi-card-component` |
+| When user needs DataTable | table-patterns.md | Full document |
 | When user needs export functionality | export-patterns.md | Full document |
 
 ### Document Index
 
 - [data-layer.md](references/data-layer.md) - Prisma queries, Schema analysis, API design
 - [recharts-guide.md](references/recharts-guide.md) - Chart code examples by type
+- [table-patterns.md](references/table-patterns.md) - DataTable with sorting, filtering, pagination
 - [dashboard-patterns.md](references/dashboard-patterns.md) - Page layouts, KPI cards, filters
 - [export-patterns.md](references/export-patterns.md) - CSV export, image export

@@ -86,6 +86,7 @@ bi-builder-skills/
 |----------|---------|
 | `data-layer.md` | Prisma schema analysis, aggregation queries, API routes |
 | `recharts-guide.md` | Line, Bar, Pie, Area, Composed, Scatter, Radar, Funnel charts |
+| `table-patterns.md` | DataTable with sorting, filtering, pagination, row selection |
 | `dashboard-patterns.md` | Responsive grid, KPI cards, filter bar, page layouts |
 | `export-patterns.md` | Client/server CSV export, html2canvas image export |
 
