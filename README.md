@@ -17,6 +17,61 @@ A Claude Code skill for rapidly building BI dashboards and data visualization ap
 - **Smart Skip Conditions**: Automatically skip phases based on project state
 - **Progressive Document Loading**: Load reference docs on-demand to save context
 
+## How It Works
+
+```mermaid
+flowchart TB
+    subgraph Phase1["Phase 1: Database Connection"]
+        A1[Check Prisma Installation] --> A2[Initialize Prisma]
+        A2 --> A3[Create .env with Placeholders]
+        A3 --> A4[User Fills Credentials]
+        A4 --> A5[Pull Database Schema]
+    end
+
+    subgraph Phase2["Phase 2: Schema Exploration"]
+        B1[Analyze Tables & Fields] --> B2[Identify Relationships]
+        B2 --> B3[Detect Metric Potential]
+        B3 --> B4[Generate Data Overview Report]
+    end
+
+    subgraph Phase3["Phase 3: Requirements Dialog"]
+        C1[Identify Industry] --> C2[Suggest Core Metrics]
+        C2 --> C3[Confirm Time Granularity]
+        C3 --> C4[Define Filters & Features]
+    end
+
+    subgraph Phase4["Phase 4: Metrics Design"]
+        D1[Define KPI Calculations] --> D2[Design Time Series Queries]
+        D2 --> D3[Create Aggregation Functions]
+    end
+
+    subgraph Phase5["Phase 5: Chart & Layout Planning"]
+        E1[Select Visualization Types] --> E2[Choose Layout Pattern]
+        E2 --> E3[Plan Component Structure]
+    end
+
+    subgraph Phase6["Phase 6: Page Implementation"]
+        F1[Create API Routes] --> F2[Build Chart Components]
+        F2 --> F3[Build DataTable Components]
+        F3 --> F4[Assemble Dashboard Page]
+    end
+
+    Phase1 --> Phase2
+    Phase2 --> Phase3
+    Phase3 --> Phase4
+    Phase4 --> Phase5
+    Phase5 --> Phase6
+
+    %% Skip conditions
+    Skip1{{"prisma/schema.prisma exists?"}}
+    Skip2{{"Clear requirements?"}}
+    Skip3{{"Single chart only?"}}
+
+    Skip1 -->|Yes| Phase2
+    Skip2 -->|Yes| Phase4
+    Skip3 -->|Yes| Phase6
+```
+
 ## Tech Stack
 
 | Layer | Technology |
