@@ -468,7 +468,30 @@ export async function getCategoryDistribution(startDate: Date, endDate: Date) {
 | Transaction logs | DataTable | Search, filter, export capabilities |
 | Item listings | DataTable | With actions (view, edit, delete) |
 
-### 5.2 Layout Planning
+### 5.2 Layout Type Selection
+
+Ask user about their dashboard purpose to recommend a layout:
+
+```
+What is the primary purpose of this dashboard?
+1. Executive Overview - High-level KPIs for quick decision-making
+2. Operations Monitoring - Real-time data and alerts
+3. Deep Analysis - Multi-dimensional filtering and exploration
+4. Period Comparison - YoY/MoM comparison and benchmarking
+```
+
+| Layout Type | Best For | Key Features |
+|-------------|----------|--------------|
+| Executive Dashboard | C-level, managers | KPI cards + main trend + distribution |
+| Operational Dashboard | Operations team | Real-time status + live table + alerts |
+| Analytical Dashboard | Analysts | Sidebar filters + drill-down + detailed table |
+| Comparison Dashboard | Strategy, planning | Period selector + dual charts + change analysis |
+
+**Before implementing layout → Must read [dashboard-patterns.md#common-bi-layout-patterns](references/dashboard-patterns.md#common-bi-layout-patterns)**
+
+### 5.3 Layout Structure
+
+Default Executive Dashboard layout:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
