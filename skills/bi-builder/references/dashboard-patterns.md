@@ -25,7 +25,7 @@
 
 ---
 
-### 1. Executive Dashboard (高管看板)
+### 1. Executive Dashboard
 
 Best for: Quick overview of business health, decision-making at a glance.
 
@@ -102,7 +102,7 @@ export function ExecutiveDashboard() {
 
 ---
 
-### 2. Operational Dashboard (运营看板)
+### 2. Operational Dashboard
 
 Best for: Real-time monitoring, quick response, status tracking.
 
@@ -255,7 +255,7 @@ function AlertBadge({ count }: { count: number }) {
 
 ---
 
-### 3. Analytical Dashboard (分析看板)
+### 3. Analytical Dashboard
 
 Best for: Deep data analysis, multi-dimensional filtering, exploration.
 
@@ -456,7 +456,7 @@ export function AnalyticalDashboard() {
 
 ---
 
-### 4. Comparison Dashboard (对比看板)
+### 4. Comparison Dashboard
 
 Best for: Period-over-period analysis, benchmarking, goal tracking.
 
